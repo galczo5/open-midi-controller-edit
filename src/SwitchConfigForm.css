@@ -1,0 +1,11 @@
+.switch-form__row {
+    display: flex;
+}
+
+.switch-form__control + .switch-form__control {
+    margin-left: 10px;
+}
+
+.switch-form__control input {
+    width: 100px;
+}

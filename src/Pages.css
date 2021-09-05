@@ -1,0 +1,30 @@
+.pages__wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.pages__selector {
+    background: dimgray;
+    width: 100%;
+
+    border-radius: 5px 0 0 5px;
+    margin-bottom: 5px;
+    padding: 3px 0;
+    text-align: center;
+    cursor: pointer;
+
+    opacity: .5;
+}
+
+.pages__selector--active {
+    background: dodgerblue;
+    color: white;
+    font-weight: bold;
+    opacity: 1;
+}
