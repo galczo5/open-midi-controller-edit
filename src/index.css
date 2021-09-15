@@ -17,3 +17,7 @@ input, select, button {
   outline: none;
   background: white;
 }
+
+input:disabled, select:disabled, button:disabled {
+  opacity: .5;
+}

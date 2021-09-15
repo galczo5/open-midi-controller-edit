@@ -28,7 +28,7 @@ export function SwitchConfigForm(props: { clickType: number, fsNo: number, confi
     const [newData2, setNewData2] = useState('0');
     const [newData3, setNewData3] = useState('0');
 
-    useCallback(() => {
+    useEffect(() => {
         setNewType(type.toString());
         setNewChannel(channel.toString());
         setNewData1(data1.toString());
@@ -37,16 +37,21 @@ export function SwitchConfigForm(props: { clickType: number, fsNo: number, confi
     }, []);
 
     const saveConfig = async () => {
-        await HTTP.saveConfig(
-                props.fsNo - 1,
-                props.clickType,
-                Number(newChannel),
-                Number(newType),
-                Number(newData1),
-                Number(newData2),
-                Number(newData3)
-        );
+        const channel = Number(newChannel);
+        const type = Number(newType);
+        const data1 = Number(newData1);
+        const data2 = Number(newData2);
+        const data3 = Number(newData3);
+        await HTTP.saveConfig(props.fsNo - 1, props.clickType, channel, type, data1, data2, data3);
     };
+
+    function changes() {
+        return channel !== Number(newChannel)
+            || type !== Number(newType)
+            || data1 !== Number(newData1)
+            || data2 !== Number(newData2)
+            || data3 !== Number(newData3);
+    }
 
     function getLabel(n: number): string {
         return labels[newType][n];
@@ -98,9 +103,9 @@ export function SwitchConfigForm(props: { clickType: number, fsNo: number, confi
             </div>
 
             <div className="switch-form__control">
-                <label>Actions</label><br/>
-                <button onClick={() => saveConfig()}>
-                    Send configuration
+                <label style={{ visibility: "hidden" }}>.</label><br/>
+                <button disabled={!changes()} onClick={() => saveConfig()}>
+                    Save
                 </button>
             </div>
         </div>

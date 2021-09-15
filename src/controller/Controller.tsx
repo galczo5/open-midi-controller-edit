@@ -7,6 +7,7 @@ import ReactDOM from "react-dom";
 import {SwitchConfig} from "../switch-config/SwitchConfig";
 import {DeviceConfig, FsConfig, PageConfig} from "../DeviceConfig";
 import {HTTP} from "../HttpClient";
+import axios from "axios";
 
 function getPage(page: number, config: DeviceConfig): PageConfig {
     return config.find(x => x.page === page);
@@ -20,7 +21,7 @@ function getFsConfig(fs: number, pageConfig: PageConfig): FsConfig {
     };
 }
 
-export function Controller() {
+export function Controller(props: { port: string }) {
 
     const [ page, setPage ] = useState(0);
     const [ activeSwitch, setActiveSwitch ] = useState(1);
@@ -47,43 +48,17 @@ export function Controller() {
     };
 
     const loadConfig = async () => {
-        // const response = await axios.post('http://localhost:5000/read');
-        // setConfig(response.data.data);
+        const response = await axios.post('http://localhost:5000/port', {
+            port: props.port
+        });
 
-        setConfig([
-            {
-                page: 0,
-                click: {
-                    fs1: [0, 0, 0, 0, 0],
-                    fs2: [0, 0, 0, 0, 0],
-                    fs3: [0, 0, 0, 0, 0],
-                    fs4: [0, 0, 0, 0, 0],
-                    fs5: [0, 0, 0, 0, 0],
-                    fs6: [0, 0, 0, 0, 0]
-                },
-                longClick: {
-                    fs1: [0, 0, 0, 0, 0],
-                    fs2: [0, 0, 0, 0, 0],
-                    fs3: [0, 0, 0, 0, 0],
-                    fs4: [0, 0, 0, 0, 0],
-                    fs5: [0, 0, 0, 0, 0],
-                    fs6: [0, 0, 0, 0, 0]
-                },
-                doubleClick: {
-                    fs1: [0, 0, 0, 0, 0],
-                    fs2: [0, 0, 0, 0, 0],
-                    fs3: [0, 0, 0, 0, 0],
-                    fs4: [0, 0, 0, 0, 0],
-                    fs5: [0, 0, 0, 0, 0],
-                    fs6: [0, 0, 0, 0, 0]
-                }
-            }
-        ])
+        setConfig(response.data);
     }
 
     const toSwitch = (x, reversed) => {
         return (
-            <Switch index={x}
+            <Switch key={x}
+                    index={x}
                     disabled={!config}
                     isActive={activeSwitch === x}
                     reveresedLabels={reversed}
