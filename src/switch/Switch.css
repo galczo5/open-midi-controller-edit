@@ -8,6 +8,15 @@
     color: white;
 }
 
+.switch__wrapper--disabled {
+    opacity: .5;
+    pointer-events: none;
+}
+
+.switch__wrapper--reversed {
+    flex-direction: column-reverse;
+}
+
 .switch {
     width: 20%;
     aspect-ratio: 1 / 1;
@@ -19,7 +28,9 @@
     justify-content: center;
     cursor: pointer;
 
-    border: 5px solid black;
+    border: 5px solid #555;
+    box-shadow: 0 0 5px #000;
+
 }
 
 .switch--active {
@@ -36,7 +47,7 @@
 }
 
 .switch__label {
-    margin-top: 10px;
+    margin: 10px;
     background: rgba(255, 255, 255, .1);
     padding: 2px 10px;
     border-radius: 5px;

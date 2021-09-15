@@ -20,16 +20,21 @@
 .switch-config__footer {
     text-align: left;
     margin-top: 20px;
-}
-
-.switch-config__footer button {
-    background: gray;
-    font-family: 'Oswald', serif;
-    border: none;
-    padding: 5px 20px;
-    border-radius: 5px;
+    padding-top: 20px;
+    border-top: 1px solid black;
 }
 
 .switch-config__footer button + button {
     margin-left: 10px;
+}
+
+.switch-config__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.switch-config__header button {
+    margin-right: 10px;
+    background: none;
 }

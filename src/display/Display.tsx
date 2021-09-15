@@ -1,7 +1,7 @@
 import React from 'react';
 import './Display.css';
 
-export function Display(props: { line1: string, line2: string }) {
+export function Display(props: { line1: string, line2: string, onLoad: () => void }) {
     return (
         <div className="display">
             <div className="display__frame">
@@ -11,7 +11,10 @@ export function Display(props: { line1: string, line2: string }) {
                         <br/>
                         { props.line2 }
                         <br/>
-                        <span className="display__load">CLICK TO LOAD FROM DEVICE</span>
+                        <span className="display__load"
+                              onClick={() => props.onLoad()}>
+                            CLICK TO LOAD FROM DEVICE
+                        </span>
                     </div>
                 </div>
             </div>

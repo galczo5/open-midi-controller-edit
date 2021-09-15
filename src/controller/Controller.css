@@ -1,0 +1,24 @@
+.controller__body {
+    aspect-ratio: 18 / 12;
+    width: 60%;
+    background: #151515;
+    border-radius: 10px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 50px;
+    grid-template-rows: repeat(3, 1fr);
+    box-shadow: 0 0 30px #111;
+    position: relative;
+}
+
+.controller__logo {
+    position: absolute;
+    transform: rotate(90deg);
+    transform-origin: top right;
+    padding: 10px 0;
+    white-space: nowrap;
+    color: dodgerblue;
+    text-shadow: 0 0 10px dodgerblue;
+    bottom: 0;
+    right: 0;
+}

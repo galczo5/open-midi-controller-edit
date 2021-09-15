@@ -4,6 +4,8 @@ import './Switch.css';
 type SwitchProps = {
     index: number,
     isActive?: boolean,
+    disabled: boolean,
+    reveresedLabels?: boolean,
     onClick: () => void
 }
 
@@ -14,8 +16,12 @@ export function Switch(props: SwitchProps) {
         className += ' switch--active';
     }
 
+    const disabledClass = props.disabled ? 'switch__wrapper--disabled ' : '';
+    const reveresedClass = props.reveresedLabels ? 'switch__wrapper--reversed ' : '';
+
     return (
-        <div className="switch__wrapper" onClick={() => props.onClick()}>
+        <div className={'switch__wrapper ' + disabledClass + reveresedClass}
+             onClick={() => props.onClick()}>
             <div className={className}>
                 <div className="switch__inner"/>
             </div>

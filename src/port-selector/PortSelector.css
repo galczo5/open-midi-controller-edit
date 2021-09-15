@@ -1,0 +1,16 @@
+.port-selector__wrapper {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.port-selector__label {
+    margin-right: 10px;
+    color: white;
+}
+
+.port-selector__select {
+    max-width: 200px;
+    margin-right: 10px;
+}
